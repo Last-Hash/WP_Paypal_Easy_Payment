@@ -44,14 +44,14 @@ function wppp_render_paypal_button_with_other_amt($args) {
     $output .= '<div class="wp_paypal_button_widget_any_amt">';
     $output .= '<form name="_xclick" class="wp_accept_pp_button_form_any_amount" action="https://www.paypal.com/cgi-bin/webscr" method="post" ' . $window_target . '>';
 
-    $output .= '<div class="wp_pp_button_amount_section">'.esc_attr($other_amount_label).' <br/><input type="number" min="1" step="any" name="amount" value="' . esc_attr($default_amount) . '" class="wppep_other_amt_input" required><br/>' . esc_attr($currency) . '</div>';
+    $output .= '<div class="wppep_button_amount_section">'.esc_attr($other_amount_label).' <br/><input type="number" min="1" step="any" name="amount" value="' . esc_attr($default_amount) . '" class="wppep_other_amt_input" required><br/>' . esc_attr($currency) . '</div>';
 
     if (!empty($reference)) {
-        $output .= '<div class="wp_pp_button_reference_section">';
-        $output .= '<label for="wp_pp_button_reference">' . esc_attr($reference) . '</label>';
+        $output .= '<div class="wppep_button_reference_section">';
+        $output .= '<label for="wppep_button_reference">' . esc_attr($reference) . '</label>';
         $output .= '<br />';
-        $output .= '<input type="hidden" name="on0" value="' . apply_filters('wp_pp_button_reference_name', 'Reference') . '" />';
-        $output .= '<input type="text" name="os0" value="' . apply_filters('wp_pp_button_reference_value', '') . '" class="wp_pp_button_reference" />';
+        $output .= '<input type="hidden" name="on0" value="' . apply_filters('wppep_button_reference_name', 'Reference') . '" />';
+        $output .= '<input type="text" name="os0" value="' . apply_filters('wppep_button_reference_value', '') . '" class="wppep_button_reference" />';
         $output .= '</div>';
     }
 
@@ -87,7 +87,7 @@ function wppp_render_paypal_button_with_other_amt($args) {
         $output .= '<input type="hidden" name="notify_url" value="' . esc_url($notify_url) . '" />';
     }
 
-    $output .= '<div class="wp_pp_button_submit_btn">';
+    $output .= '<div class="wppep_button_submit_btn">';
     if (!empty($button_text)) {//Use text button
         $button_class = apply_filters('wppp_text_button_class', '');
         $output .= '<input type="submit" name="submit" class="' . $button_class . '" value="' . esc_attr($button_text) . '" />';
@@ -148,7 +148,7 @@ function wppp_render_paypal_button_form($args) {
     ?>
     <div class="wp_paypal_button_widget">
         <form name="_xclick" class="wp_accept_pp_button_form" action="https://www.paypal.com/cgi-bin/webscr" method="post" <?php echo $window_target; ?> >	
-            <div class="wp_pp_button_selection_section">
+            <div class="wppep_button_selection_section">
                 <select class="wp_paypal_button_options">
     <?php echo $html_options; ?>
                 </select>
@@ -156,17 +156,17 @@ function wppp_render_paypal_button_form($args) {
 
                     <?php
                     if (!empty($other_amount)) {
-                        echo '<div class="wp_pp_button_other_amt_section">';
+                        echo '<div class="wppep_button_other_amt_section">';
                         echo esc_attr($other_amount_label).' <input type="number" min="1" step="any" name="other_amount" value="" class="wppep_other_amt_input" style="max-width:80px;"> ' . esc_attr($currency);
                         echo '</div>';
                     }
 
                     if (!empty($reference)) {
-                        echo '<div class="wp_pp_button_reference_section">';
-                        echo '<label for="wp_pp_button_reference">' . esc_attr($reference) . '</label>';
+                        echo '<div class="wppep_button_reference_section">';
+                        echo '<label for="wppep_button_reference">' . esc_attr($reference) . '</label>';
                         echo '<br />';
-                        echo '<input type="hidden" name="on0" value="' . apply_filters('wp_pp_button_reference_name', 'Reference') . '" />';
-                        echo '<input type="text" name="os0" value="' . apply_filters('wp_pp_button_reference_value', '') . '" class="wp_pp_button_reference" />';
+                        echo '<input type="hidden" name="on0" value="' . apply_filters('wppep_button_reference_name', 'Reference') . '" />';
+                        echo '<input type="text" name="os0" value="' . apply_filters('wppep_button_reference_value', '') . '" class="wppep_button_reference" />';
                         echo '</div>';
                     }
 
@@ -212,7 +212,7 @@ function wppp_render_paypal_button_form($args) {
         $output .= '<input type="hidden" name="notify_url" value="' . esc_url($notify_url) . '" />';
     }
 
-    echo '<div class="wp_pp_button_submit_btn">';
+    echo '<div class="wppep_button_submit_btn">';
     if (!empty($button_text)) {//Use text button
         $button_class = apply_filters('wppp_text_button_class', '');
         echo '<input type="submit" name="submit" class="' . $button_class . '" value="' . esc_attr($button_text) . '" />';
